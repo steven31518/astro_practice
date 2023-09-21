@@ -4,11 +4,40 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header";
 import Card3d from "../components/Card3d";
 import Collapse from "../components/Collapse";
-console.log("page");
+import imgData from "../data/image.json";
+import { getImage } from "astro:assets";
+const data = Astro.locals;
+const coverImage = await getImage({
+  src: imgData[0].worrier.cover,
+  format: "jpg",
+  width: 1920,
+  height: 1080,
+});
+const titleImage = await getImage({
+  src: imgData[0].worrier.title,
+  format: "jpg",
+  width: 1920,
+  height: 1080,
+});
+const characterImage = await getImage({
+  src: imgData[0].worrier.character,
+  format: "jpg",
+  width: 1920,
+  height: 1080,
+});
 ---
 
 <Layout title="Welcome to Astro.">
   <Collapse client:load />
+  <div class="container px-4">
+    <Card3d
+      titleImg={titleImage.src}
+      coverImg={coverImage.src}
+      characterImg={characterImage.src}
+      client:load
+    />
+    <div><h2>{data.welcomeTitle()}</h2></div>
+  </div>
 </Layout>
 
 <style></style>

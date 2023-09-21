@@ -26,8 +26,7 @@ export const MenuItem = ({ children }: Props) => {
   return (
     <motion.li
       variants={variants}
-      className="grid grid-rows-2 grid-flow-col gap-4"
-      whileTap={{ scale: 0.95 }}
+      className="grid grid-rows-2 grid-flow-col gap-2 py-4"
     >
       {children}
     </motion.li>

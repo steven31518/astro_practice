@@ -2,8 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Card3d from "../components/Card3d";
 import Header from "../components/Header";
+import Collapse from "../components/Collapse";
+const data = Astro.locals;
 ---
 
 <Layout title="about Astro">
-  <Header client:load />
+  <Collapse client:load />
+  <div><h2>{data.welcomeTitle()}</h2></div>
 </Layout>

@@ -5,7 +5,7 @@ import MenuToggle from "./MenuToggle";
 import { MenuItem } from "./MenuItem";
 import Button from "../Button";
 const sidebar = {
-  open: (height = 1000) => ({
+  open: (height = 500) => ({
     clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
     transition: {
       type: "spring",
@@ -41,7 +41,7 @@ const Collapse = () => {
     <motion.nav
       initial={false}
       animate={isOpen ? "open" : "closed"}
-      custom={scrollHeight}
+      custom={isOpen ? scrollHeight : 0}
       className="p-4"
     >
       <MenuToggle toggle={() => toggleOpen()} />
@@ -52,12 +52,24 @@ const Collapse = () => {
       >
         <motion.ul variants={itemVariants}>
           <MenuItem>
-            <Button variant="text" themeColor="primary">
-              text
-            </Button>
-            <Button variant="text" themeColor="primary">
-              sceond text
-            </Button>
+            <a href="/newPage">
+              <Button
+                variant="outlined"
+                themeColor="primary"
+                className={"w-[150px] rounded-full"}
+              >
+                New Page
+              </Button>
+            </a>
+            <a href="/">
+              <Button
+                variant="outlined"
+                themeColor="primary"
+                className={"w-[150px] rounded-full"}
+              >
+                Home
+              </Button>
+            </a>
           </MenuItem>
         </motion.ul>
       </motion.div>

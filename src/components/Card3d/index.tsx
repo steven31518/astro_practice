@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import cn from "../unit/styleMerge";
 type Props = {
   className?: string;
-  titleImg?: string;
-  coverImg?: string;
-  characterImg?: string;
+  titleImg: string;
+  coverImg: string;
+  characterImg: string;
 };
 const Card3d = ({ className, titleImg, coverImg, characterImg }: Props) => {
   const parentVariants = {

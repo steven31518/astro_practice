@@ -13,7 +13,6 @@ type Props = {
   * 2. titleImg : image's url
   * 3. coverImg : image's url (background)
   * 4. characterImg : image's url 
-
  */
 const Card3d = ({ className, titleImg, coverImg, characterImg }: Props) => {
   const parentVariants = {

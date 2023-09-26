@@ -6,7 +6,9 @@ import Card3d from "../components/Card3d";
 import Collapse from "../components/Collapse";
 import imgData from "../data/image.json";
 import { getImage } from "astro:assets";
+
 const data = Astro.locals;
+
 const coverImage = await getImage({
   src: imgData[0].worrier.cover,
   format: "jpg",

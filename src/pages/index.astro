@@ -32,13 +32,13 @@ const characterImage = await getImage({
 <Layout title="Welcome to Astro.">
   <Collapse client:load />
   <div class="container px-4">
-    <Card3d
+    <!-- <Card3d
       titleImg={titleImage.src}
       coverImg={coverImage.src}
       characterImg={characterImage.src}
       client:load
-    />
-    <div><h2>{data.welcomeTitle()}</h2></div>
+    /> -->
+    <div><h2 class="text-primary">{data.welcomeTitle()}</h2></div>
   </div>
 </Layout>
 

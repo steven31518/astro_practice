@@ -1,0 +1,29 @@
+---
+export async function getStaticPaths() {
+  const pages = [
+    {
+      slug: "products",
+      title: "Astro Store",
+      text: "Welcome to the Astro store!",
+    },
+  ];
+  return pages.map(({ slug, title, text }) => {
+    return {
+      params: { slug: slug },
+      props: { title: title, text: text },
+    };
+  });
+}
+
+const { title, text } = Astro.props;
+---
+
+<html>
+  <head>
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1>{title}</h1>
+    <p>{text}</p>
+  </body>
+</html>

@@ -12,7 +12,6 @@ const authorSchema = z.object({
   name: z.string(),
   job: z.string(),
   introduce: z.string(),
-  
 });
 const experienceSchema = z.object({
   title: z.string(),
@@ -21,9 +20,17 @@ const experienceSchema = z.object({
   link: z.string(),
   tags: z.array(z.string()),
 });
+const noteSchema = z.object({
+  layout: z.string(),
+  title: z.string(),
+  description: z.string(),
+  image: z.string(),
+  link: z.string(),
+});
 
 export const collectionSchema = {
   portfolioSchema,
   authorSchema,
   experienceSchema,
+  noteSchema,
 };

@@ -1,4 +1,4 @@
-import { z, defineCollection } from "astro:content";
+import { z } from "astro:content";
 
 const portfolioSchema = z.object({
   title: z.string(),
@@ -12,9 +12,7 @@ const authorSchema = z.object({
   name: z.string(),
   job: z.string(),
   introduce: z.string(),
-  twitter: z.string(),
-  github: z.string(),
-  linkedin: z.string(),
+  
 });
 const experienceSchema = z.object({
   title: z.string(),

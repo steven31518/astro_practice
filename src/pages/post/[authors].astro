@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const authorsData = await getCollection("authors");
+  console.log(authorsData);
+  return authorsData.map((d) => {
+    return {
+      params: {
+        authors: d.id,
+      },
+      props: {
+        introduce: d.data.introduce,
+        job: d.data.job,
+      },
+    };
+  });
+}
+const { authors } = Astro.params;
+const { introduce, job } = Astro.props;
+---
+
+<h1>{authors}</h1>
+<p>{introduce}</p>
+<p>{job}</p>

@@ -21,7 +21,6 @@ const experienceSchema = z.object({
   tags: z.array(z.string()),
 });
 const noteSchema = z.object({
-  layout: z.string(),
   title: z.string(),
   description: z.string(),
   image: z.string(),

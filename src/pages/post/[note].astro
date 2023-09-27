@@ -1,0 +1,8 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const noteData = await getCollection();
+}
+---

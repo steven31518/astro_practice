@@ -4,7 +4,6 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const authorsData = await getCollection("authors");
-  console.log(authorsData);
   return authorsData.map((d) => {
     return {
       params: {

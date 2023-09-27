@@ -7,7 +7,6 @@ const { portfolioSchema, authorSchema, experienceSchema, noteSchema } =
 const portfolioCollection = defineCollection({
   type: "content",
   schema: portfolioSchema,
-  /* ... */
 });
 const authorCollection = defineCollection({
   type: "data",
@@ -24,8 +23,8 @@ const noteCollection = defineCollection({
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
-  portfolio: portfolioCollection,
   authors: authorCollection,
-  experience: experienceCollection,
   note: noteCollection,
+  portfolio: portfolioCollection,
+  experience: experienceCollection,
 };

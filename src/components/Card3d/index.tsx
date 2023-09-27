@@ -8,11 +8,11 @@ type Props = {
   characterImg: string;
 };
 
-/** 
-  * 1. className : no limit
-  * 2. titleImg : image's url
-  * 3. coverImg : image's url (background)
-  * 4. characterImg : image's url 
+/**
+ * 1. className : no limit
+ * 2. titleImg : image's url
+ * 3. coverImg : image's url (background)
+ * 4. characterImg : image's url
  */
 const Card3d = ({ className, titleImg, coverImg, characterImg }: Props) => {
   const parentVariants = {
@@ -28,10 +28,10 @@ const Card3d = ({ className, titleImg, coverImg, characterImg }: Props) => {
       opacity: 1,
     },
     hover: {
-      perspective: "900px",
       rotateX: 25,
       y: -5,
       z: 0,
+      filter: "brightness(0.8)",
       boxShadow: "2px 35px 32px -8px rgba(0, 0, 0, 0.75)",
       transition: {
         duration: 0.5,

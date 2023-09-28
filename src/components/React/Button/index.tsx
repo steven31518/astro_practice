@@ -43,14 +43,14 @@ const Button = ({
     <button
       onClick={onClick}
       type={btnType}
-      className={cn("p-4", className, {
+      className={cn("p-2", className, {
         [variantMap[variant]]: variant,
         [variantMap.isDisabled]: isDisabled,
       })}
     >
-      {startIcon && <span className="me-2">{startIcon}</span>}
-      <span>{children}</span>
-      {endIcon && <span className="ms-2">{endIcon}</span>}
+      {startIcon && <div>{startIcon}</div>}
+      <span className={cn({ children: "mx-2" })}>{children}</span>
+      {endIcon && <div>{endIcon}</div>}
     </button>
   );
 };

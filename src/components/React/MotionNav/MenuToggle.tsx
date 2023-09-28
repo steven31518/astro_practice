@@ -8,7 +8,7 @@ const Path = (props: any) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
-    stroke="#89f08d"
+    stroke="hsl(0, 0%, 18%)"
     strokeLinecap="round"
     {...props}
   />
@@ -18,8 +18,8 @@ const MenuToggle = ({ toggle }: Props) => (
   <Button
     onClick={toggle}
     variant="outlined"
-    themeColor="primary"
-    className="rounded-full"
+    themeColor="secondary"
+    className="m-auto rounded-sm"
     startIcon={
       <svg width="24" height="24" viewBox="0 0 23 23">
         <Path
@@ -44,7 +44,7 @@ const MenuToggle = ({ toggle }: Props) => (
         />
       </svg>
     }
-  >Menu</Button>
+  ></Button>
 );
 
 export default MenuToggle;

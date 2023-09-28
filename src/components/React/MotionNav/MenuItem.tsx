@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { Children } from "react";
+import Button from "../Button";
 
 const variants = {
   open: {
@@ -11,6 +11,7 @@ const variants = {
   },
   closed: {
     y: 50,
+
     opacity: 0,
     transition: {
       y: { stiffness: 1000 },
@@ -19,16 +20,19 @@ const variants = {
 };
 
 type Props = {
-  children: React.ReactNode;
+  i: number;
 };
 
-export const MenuItem = ({ children }: Props) => {
+export const MenuItem = ({ i }: Props) => {
   return (
-    <motion.li
-      variants={variants}
-      className="grid grid-rows-2 grid-flow-col gap-2 py-4"
-    >
-      {children}
+    <motion.li variants={variants}>
+      <Button
+        variant="contained"
+        themeColor="secondary"
+        className="my-1 rounded-sm"
+      >
+        button
+      </Button>
     </motion.li>
   );
 };

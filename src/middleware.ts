@@ -2,7 +2,7 @@ import { defineMiddleware } from "astro:middleware";
 import { fetchEmpData } from "./api";
 export const onRequest = defineMiddleware(async (context, next) => {
   const randomUser = await fetchEmpData();
- console.log(context)
+
   context.locals.user = {
     name: randomUser.name.first + " " + randomUser.name.last,
   };

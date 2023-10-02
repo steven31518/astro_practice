@@ -21,18 +21,9 @@ const variants = {
 
 type Props = {
   i: number;
+  children: React.ReactNode;
 };
 
-export const MenuItem = ({ i }: Props) => {
-  return (
-    <motion.li variants={variants}>
-      <Button
-        variant="contained"
-        themeColor="secondary"
-        className="my-1 rounded-sm"
-      >
-        button
-      </Button>
-    </motion.li>
-  );
+export const MenuItem = ({ i, children }: Props) => {
+  return <motion.li variants={variants}>{children}</motion.li>;
 };

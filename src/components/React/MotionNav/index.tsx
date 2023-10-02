@@ -3,6 +3,7 @@ import { motion, useCycle } from "framer-motion";
 import MenuToggle from "./MenuToggle";
 import { Navigation } from "./Navigation";
 import { useDimensions } from "../unit/useDimansions";
+import cn from "../unit/styleMerge";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -23,7 +24,10 @@ const sidebar = {
     },
   },
 };
-const MotionNav = () => {
+type Props = {
+  children: React.ReactNode;
+};
+const MotionNav = ({ children }: Props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   const containerRef = useRef(null);
@@ -40,7 +44,9 @@ const MotionNav = () => {
     >
       <MenuToggle toggle={() => toggleOpen()} />
       <motion.div className="background" variants={sidebar} />
-      <Navigation />
+      <Navigation className={cn("grid grid-rows-4 grid-flow-col gap-4 p-3")}>
+        {children}
+      </Navigation>
     </motion.nav>
   );
 };

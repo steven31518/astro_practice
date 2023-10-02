@@ -2,6 +2,7 @@
 import BaseHead from "../components/astro/BaseHead.astro";
 import Hearder from "../components/astro/Hearder.astro";
 import Footer from "../components/astro/Footer.astro";
+import Drawer from "../components/React/Drawer";
 interface Props {
   title?: string;
   description?: string;
@@ -18,6 +19,12 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   </head>
   <body>
     <Hearder title={title} />
+    <Drawer client:load>
+      <li>123</li>
+      <li>123</li>
+      <li>123</li>
+      <li>123</li>
+    </Drawer>
     <slot />
     <Footer />
   </body>

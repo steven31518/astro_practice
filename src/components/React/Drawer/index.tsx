@@ -2,7 +2,6 @@ import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "../unit/useDimansions";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import cn from "../unit/styleMerge";
-import useMediaQuery from "../unit/useMediaQuery";
 import { useRef } from "react";
 const variants = {
   open: (height: number) => ({
@@ -56,7 +55,6 @@ const Drawer = ({ children }: Props) => {
   const [isOpen, toggleOpen] = useCycle(true, false);
   const drawerRef = useRef(null);
   const { height } = useDimensions(drawerRef);
-  const { matches } = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
@@ -64,28 +62,27 @@ const Drawer = ({ children }: Props) => {
         initial={false}
         animate={isOpen ? "open" : "closed"}
         custom={height}
-        className=""
+        className="fixed top-50 left-0 z-10 bg-transparent md:static md:top-0 md:left-0 md:z-0"
       >
-        <div className="flex items-start rounded-e-sm">
+        <motion.div
+          className="flex items-center rounded-e-sm bg-slate-50"
+          onClick={() => toggleOpen()}
+          whileHover={{ scale: 1.1 }}
+        >
           <motion.ul
             variants={variants}
             ref={drawerRef}
-            className="text-center bg-slate-50"
+            className="text-start text-sm max-h-screen overflow-y-scroll"
           >
             {children}
           </motion.ul>
           <motion.div
             variants={iconVariants}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 1 }}
-            className={cn(
-              "text-center cursor-pointer p-1 flex  bg-slate-50 border-2 border-solid border-slate-300",
-            )}
-            onClick={() => toggleOpen()}
+            className={cn("text-center cursor-pointer p-1 md:hidden ")}
           >
-            <AiOutlineMenuUnfold className="text-4xl" />
+            <AiOutlineMenuUnfold className="text-2xl" />
           </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
     </>
   );

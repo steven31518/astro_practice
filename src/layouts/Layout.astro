@@ -18,7 +18,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body>
-    <Hearder title={title} />
+    <Hearder title={title} transition:persist />
     <slot />
     <Footer />
   </body>

@@ -32,7 +32,6 @@
     0 8px 24px var(--color-light-text), 33%, 0 16px 32px var(--color-light-text),
     33%;
 }
-
 @font-face {
   font-family: "Atkinson";
   src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -50,7 +49,7 @@
 body {
   font-family: "Atkinson", sans-serif;
   margin: 0;
-  padding: 0;
+  padding-top: 60px;
   text-align: left;
   background: linear-gradient(var(--gray-gradient)) no-repeat;
   background-size: 100%;

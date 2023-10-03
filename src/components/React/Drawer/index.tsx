@@ -2,8 +2,8 @@ import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "../unit/useDimansions";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import cn from "../unit/styleMerge";
-import Button from "../Button";
-import React, { useRef } from "react";
+import useMediaQuery from "../unit/useMediaQuery";
+import { useRef } from "react";
 const variants = {
   open: (height: number) => ({
     width: 250,
@@ -48,10 +48,15 @@ const iconVariants = {
     },
   },
 };
+
+type Props = {
+  children: React.ReactNode;
+};
 const Drawer = ({ children }: Props) => {
   const [isOpen, toggleOpen] = useCycle(true, false);
   const drawerRef = useRef(null);
   const { height } = useDimensions(drawerRef);
+  const { matches } = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
@@ -59,7 +64,7 @@ const Drawer = ({ children }: Props) => {
         initial={false}
         animate={isOpen ? "open" : "closed"}
         custom={height}
-        className="fixed top-100 left-0 z-50"
+        className=""
       >
         <div className="flex items-start rounded-e-sm">
           <motion.ul

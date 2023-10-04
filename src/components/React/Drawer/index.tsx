@@ -62,23 +62,20 @@ const Drawer = ({ children }: Props) => {
         initial={false}
         animate={isOpen ? "open" : "closed"}
         custom={height}
-        className="fixed top-50 left-0 z-10 bg-transparent md:static md:top-0 md:left-0 md:z-0"
+        className="fixed top-50 left-0 z-50 bg-transparent md:static md:top-0 md:left-0 md:z-0"
       >
-        <motion.div
-          className="flex items-center rounded-e-sm bg-slate-50"
-          onClick={() => toggleOpen()}
-          whileHover={{ scale: 1.1 }}
-        >
+        <motion.div className="flex items-center rounded-e-sm bg-default">
           <motion.ul
             variants={variants}
             ref={drawerRef}
-            className="text-start text-sm max-h-screen overflow-y-scroll"
+            className="text-start text-sm text-default max-h-screen overflow-y-scroll"
           >
             {children}
           </motion.ul>
           <motion.div
             variants={iconVariants}
-            className={cn("text-center cursor-pointer p-1 md:hidden ")}
+            onClick={() => toggleOpen()}
+            className={cn("text-center cursor-pointer p-1 md:hidden")}
           >
             <AiOutlineMenuUnfold className="text-2xl" />
           </motion.div>

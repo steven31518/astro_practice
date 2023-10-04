@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import Button from "../Button";
+import cn from "../unit/styleMerge";
 type Props = {
   toggle: () => void;
+  className?: string;
 };
 
 const Path = (props: any) => (
@@ -14,12 +16,12 @@ const Path = (props: any) => (
   />
 );
 
-const MenuToggle = ({ toggle }: Props) => (
+const MenuToggle = ({ toggle, className }: Props) => (
   <Button
     onClick={toggle}
     variant="outlined"
     themeColor="secondary"
-    className="m-auto rounded-sm"
+    className={cn("m-auto rounded-sm", className)}
     startIcon={
       <svg width="24" height="24" viewBox="0 0 23 23">
         <Path

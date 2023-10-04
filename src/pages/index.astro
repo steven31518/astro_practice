@@ -1,6 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
+import BlogPost from "../layouts/BlogPost.astro";
 import imgData from "../data/image.json";
 import { getImage } from "astro:assets";
 
@@ -26,10 +25,10 @@ const characterImage = await getImage({
 });
 ---
 
-<Layout title="Welcome to Astro.">
-  <div class="">
-    <div><h2 class="text-primary">{data.welcomeTitle()}</h2></div>
+<BlogPost title="Welcome to Astro.">
+  <div class="content-normal">
+    <div><h2>{data.welcomeTitle()}</h2></div>
   </div>
-</Layout>
+</BlogPost>
 
 <style></style>

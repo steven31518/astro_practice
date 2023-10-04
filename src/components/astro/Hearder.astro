@@ -1,44 +1,81 @@
 ---
 import MotionNav from "../React/MotionNav";
 import Button from "../React/Button";
+import Theme from "./Theme.astro";
 
 const { title } = Astro.props;
 ---
 
-<div class="fixed top-0 w-full bg-slate-100 z-20">
-  <div class="grid grid-cols-12 px-2 py-2 h-[60px]">
-    <div class="col-span-10 lg:col-span-11"><h1 class="text-bold text-lg p-3">{title}</h1></div>
-    <div class="col-span-2 lg:col-span-1">
+<div
+  class="fixed top-0 w-full bg-default border-b-2 border-default border-solid z-20"
+>
+  <div class="grid grid-cols-12 px-2 py-2 h-[60px] items-center">
+    <div class="col-span-9 lg:col-span-10">
+      <h1 class="text-bold text-lg p-3">{title}</h1>
+    </div>
+    <div class="col-span-1 lg:col-span-1"><Theme transition:persist /></div>
+    <div class="col-span-2 lg:col-span-1 items-end">
       <MotionNav client:load>
-      <a href="/"
-        ><Button
-          variant="text"
-          themeColor="secondary"
-          className="w-[100px] rounded-lg"
+        <a href="/"
+          ><Button
+            variant="contained"
+            themeColor="secondary"
+            className="w-[100px] rounded-lg"
+          >
+            Home
+          </Button></a
         >
-          Home
-        </Button></a
-      >
-      <a href="/newPage"
-        ><Button
-          variant="text"
-          themeColor="secondary"
-          className="w-[100px]  rounded-lg"
+        <a href="/newPage"
+          ><Button
+            variant="contained"
+            themeColor="secondary"
+            className="w-[100px]  rounded-lg"
+          >
+            Blog
+          </Button></a
         >
-          Blog
-        </Button></a
-      >
-      <a href=""
-        ><Button
-          variant="text"
-          themeColor="secondary"
-          className="w-[100px]  rounded-lg"
-        >
-          Author
-        </Button>
+        <a href=""
+          ><Button
+            variant="contained"
+            themeColor="secondary"
+            className="w-[100px]  rounded-lg"
+          >
+            Author
+          </Button>
         </a>
-    </MotionNav></div>
-   
-    
+      </MotionNav>
+    </div>
   </div>
 </div>
+<style>
+  header {
+    margin: 0;
+    padding: 0 1em;
+    background: white;
+    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+  }
+  h2 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  h2 a,
+  h2 a.active {
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--black);
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active {
+    text-decoration: none;
+    border-bottom-color: var(--accent);
+  }
+</style>

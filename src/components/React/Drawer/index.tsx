@@ -6,7 +6,7 @@ import { useRef } from "react";
 const variants = {
   open: (height: number) => ({
     width: 250,
-    height: height,
+    top: height,
     x: 0,
     transition: {
       type: "spring",
@@ -17,7 +17,7 @@ const variants = {
   }),
   closed: (height: number) => ({
     width: 0,
-    height: height,
+    top: height,
     x: -100,
     transition: {
       type: "spring",
@@ -62,13 +62,13 @@ const Drawer = ({ children }: Props) => {
         initial={false}
         animate={isOpen ? "open" : "closed"}
         custom={height}
-        className="fixed top-50 left-0 z-50 bg-transparent md:static md:top-0 md:left-0 md:z-0"
+        className="fixed top-50 left-0 z-50 bg-transparent md:static md:top-0 md:left-0 md:z-0 h-full"
       >
-        <motion.div className="flex items-center rounded-e-sm bg-default">
+        <motion.div className="flex items-start rounded-e-sm bg-default h-full">
           <motion.ul
             variants={variants}
             ref={drawerRef}
-            className="text-start text-sm text-default max-h-screen overflow-y-scroll"
+            className="text-start text-sm text-default "
           >
             {children}
           </motion.ul>

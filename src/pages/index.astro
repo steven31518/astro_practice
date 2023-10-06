@@ -2,7 +2,7 @@
 import BlogPost from "../layouts/BlogPost.astro";
 import imgData from "../data/image.json";
 import { getImage } from "astro:assets";
-
+import Card3d from "../components/React/Card3d";
 const data = Astro.locals;
 
 const coverImage = await getImage({
@@ -28,6 +28,14 @@ const characterImage = await getImage({
 <BlogPost title="Welcome to Astro.">
   <div class="content-normal">
     <div><h2>{data.welcomeTitle()}</h2></div>
+    <div>
+      <Card3d
+        titleImg={titleImage.src}
+        characterImg={characterImage.src}
+        coverImg={coverImage.src}
+        client:load
+      />
+    </div>
   </div>
 </BlogPost>
 

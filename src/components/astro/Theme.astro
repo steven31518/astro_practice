@@ -2,7 +2,7 @@
 
 ---
 
-<div class="theme-switcher">
+<div class="theme-switcher" transition:persist="theme">
   <input id="theme-switcher" data-theme-switcher type="checkbox" />
   <label for="theme-switcher">
     <span class="sr-only">theme switcher</span>
@@ -37,35 +37,36 @@
 </div>
 
 <script is:inline>
+  
 const darkMode = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-        return localStorage.getItem("theme") === "dark" ? true : false;
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return true;
-    }
-    return false;
+  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+    return localStorage.getItem("theme") === "dark" ? true : false;
+  }
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return true;
+  }
+  return false;
 })();
 
 const themeSwitch = document.querySelectorAll("[data-theme-switcher]");
-
+console.log(darkMode);
 if (darkMode) {
-    document.documentElement.classList.toggle("dark");
+  document.documentElement.classList.toggle("dark");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    [].forEach.call(themeSwitch, function (ts) {
-        ts.checked = darkMode ? true : false;
-        ts.addEventListener("click", () => {
-            document.documentElement.classList.toggle("dark");
-            localStorage.setItem(
-                "theme",
-                document.documentElement.classList.contains("dark")
-                    ? "dark"
-                    : "light",
-            );
-        });
+  [].forEach.call(themeSwitch, function (ts) {
+    ts.checked = darkMode ? true : false;
+    ts.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        document.documentElement.classList.contains("dark")
+          ? "dark"
+          : "light",
+      );
     });
+  });
 });
 </script>
 

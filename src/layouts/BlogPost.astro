@@ -2,11 +2,8 @@
 import Layout from "./Layout.astro";
 import Drawer from "../components/React/Drawer";
 import { getCollection } from "astro:content";
-const arr = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-];
+
 const noteList = await getCollection("note");
-console.log(noteList.length);
 ---
 
 <Layout>
@@ -22,13 +19,8 @@ console.log(noteList.length);
         }
       </Drawer>
     </div>
-    <div class="col-span-12 md:col-span-10 py-2 ps-10">
-      <div class="grid grid-cols-12 gap-2">
-        <div class="col-span-10 max-h-screen overflow-y-scroll">
-          <slot />
-        </div>
-        <div class="col-span-2"></div>
-      </div>
+    <div class="col-span-12 md:col-span-10 py-2 ps-10 min-h-screen">
+      <slot />
     </div>
   </div>
 </Layout>

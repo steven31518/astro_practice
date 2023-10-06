@@ -45,10 +45,10 @@ const MotionNav = ({ children }: Props) => {
       className="relative"
     >
       <MenuToggle toggle={() => toggleOpen()} />
-      <motion.div className="background" variants={sidebar} />
+      <motion.div className="background" variants={sidebar}></motion.div>
       <Navigation
         className={cn(
-          "grid grid-rows-4 grid-flow-col gap-4 p-3 absolute z-10 ",
+          "grid grid-rows-4 grid-flow-col gap-4 p-3 absolute top-0 z-10 ",
         )}
       >
         {children}

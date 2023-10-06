@@ -1,8 +1,9 @@
-import { motion, useCycle } from "framer-motion";
+import { motion } from "framer-motion";
 import { useDimensions } from "../unit/useDimansions";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import cn from "../unit/styleMerge";
-import { useRef } from "react";
+import { useMediaQuery } from "../unit/useMediaQuery";
+import { useEffect, useRef, useState } from "react";
 const variants = {
   open: (height: number) => ({
     width: 250,
@@ -52,14 +53,25 @@ type Props = {
   children: React.ReactNode;
 };
 const Drawer = ({ children }: Props) => {
-  const [isOpen, toggleOpen] = useCycle(true, false);
+  const [isOpen, setIsOpen] = useState(true);
   const drawerRef = useRef(null);
   const { height } = useDimensions(drawerRef);
+  const matches = useMediaQuery("(min-width: 768px)");
 
+  const handleDrawerOpen = () => {
+    setIsOpen(!isOpen);
+  };
+  useEffect(() => {
+    if (matches) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [matches]);
   return (
     <>
       <motion.div
-        initial={false}
+        initial={true}
         animate={isOpen ? "open" : "closed"}
         custom={height}
         className="fixed top-50 left-0 z-50 bg-transparent md:static md:top-0 md:left-0 md:z-0 h-full"
@@ -68,13 +80,13 @@ const Drawer = ({ children }: Props) => {
           <motion.ul
             variants={variants}
             ref={drawerRef}
-            className="text-start text-sm text-default "
+            className="text-start text-sm text-default"
           >
             {children}
           </motion.ul>
           <motion.div
             variants={iconVariants}
-            onClick={() => toggleOpen()}
+            onClick={() => handleDrawerOpen()}
             className={cn("text-center cursor-pointer p-1 md:hidden")}
           >
             <AiOutlineMenuUnfold className="text-2xl" />

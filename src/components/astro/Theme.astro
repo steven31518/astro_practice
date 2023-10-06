@@ -37,8 +37,7 @@
 </div>
 
 <script is:inline>
-  
-const darkMode = (() => {
+const darkMode = () => {
   if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
     return localStorage.getItem("theme") === "dark" ? true : false;
   }
@@ -46,13 +45,16 @@ const darkMode = (() => {
     return true;
   }
   return false;
-})();
+};
+document.addEventListener("astro:after-swap", () => {
+  if (darkMode()) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+});
 
 const themeSwitch = document.querySelectorAll("[data-theme-switcher]");
-console.log(darkMode);
-if (darkMode) {
-  document.documentElement.classList.toggle("dark");
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   [].forEach.call(themeSwitch, function (ts) {

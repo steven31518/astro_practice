@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 import { useDimensions } from "../unit/useDimansions";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { AiFillBackward } from "react-icons/ai";
 import cn from "../unit/styleMerge";
 import { useMediaQuery } from "../unit/useMediaQuery";
 import { useEffect, useRef, useState } from "react";
 const variants = {
   open: (height: number) => ({
-    width: 250,
+    width: 220,
     top: height,
     x: 0,
     transition: {
       type: "spring",
       stiffness: 500,
       damping: 40,
-      delay: 0.2,
     },
   }),
   closed: (height: number) => ({
@@ -24,7 +24,6 @@ const variants = {
       type: "spring",
       stiffness: 500,
       damping: 40,
-      delay: 0.2,
     },
   }),
 };
@@ -35,7 +34,6 @@ const iconVariants = {
       type: "spring",
       stiffness: 500,
       damping: 40,
-      delay: 0.2,
     },
   },
   closed: {
@@ -44,13 +42,13 @@ const iconVariants = {
       type: "spring",
       stiffness: 500,
       damping: 40,
-      delay: 0.2,
     },
   },
 };
 
 type Props = {
   children: React.ReactNode;
+  isFixed?: boolean;
 };
 const Drawer = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -71,27 +69,37 @@ const Drawer = ({ children }: Props) => {
   return (
     <>
       <motion.div
+        variants={iconVariants}
+        onClick={() => handleDrawerOpen()}
+        whileHover={{ scale: 1.5 }}
+        whileTap={{ scale: 0.9 }}
+        className={cn("text-center cursor-pointer p-1 fixed z-50")}
+      >
+        <AiOutlineMenuUnfold className="text-2xl" />
+      </motion.div>
+      <motion.div
         initial={true}
         animate={isOpen ? "open" : "closed"}
         custom={height}
-        className="fixed top-50 left-0 z-50 bg-transparent md:static md:top-0 md:left-0 md:z-0 h-full"
+        className="fixed top-50 left-0 z-50 h-full md:static"
       >
-        <motion.div className="flex items-start rounded-e-sm bg-default h-full">
-          <motion.ul
-            variants={variants}
-            ref={drawerRef}
-            className="text-start text-sm text-default"
+        <motion.ul
+          variants={variants}
+          ref={drawerRef}
+          className="text-start text-sm text-default bg-default min-h-full"
+        >
+          <motion.li
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            className="text-center cursor-pointer"
           >
-            {children}
-          </motion.ul>
-          <motion.div
-            variants={iconVariants}
-            onClick={() => handleDrawerOpen()}
-            className={cn("text-center cursor-pointer p-1 md:hidden")}
-          >
-            <AiOutlineMenuUnfold className="text-2xl" />
-          </motion.div>
-        </motion.div>
+            <motion.div className="p-2" variants={iconVariants}>
+              <AiFillBackward className="text-2xl hover:rotate-180" />
+            </motion.div>
+          </motion.li>
+          {children}
+        </motion.ul>
       </motion.div>
     </>
   );

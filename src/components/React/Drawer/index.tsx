@@ -68,15 +68,18 @@ const Drawer = ({ children }: Props) => {
   }, [matches]);
   return (
     <>
-      <motion.div
-        variants={iconVariants}
-        onClick={() => handleDrawerOpen()}
-        whileHover={{ scale: 1.5 }}
-        whileTap={{ scale: 0.9 }}
-        className={cn("text-center cursor-pointer p-1 fixed z-50 md:hidden")}
-      >
-        <AiOutlineMenuUnfold className="text-2xl" />
-      </motion.div>
+      {!isOpen && (
+        <motion.div
+          variants={iconVariants}
+          onClick={() => handleDrawerOpen()}
+          whileHover={{ opacity: 0.5 }}
+          className={cn(
+            "text-center cursor-pointer p-1 fixed z-50 md:min-h-screen md:bg-default md:static",
+          )}
+        >
+          <AiOutlineMenuUnfold className="text-2xl" />
+        </motion.div>
+      )}
       <motion.div
         initial={true}
         animate={isOpen ? "open" : "closed"}
@@ -86,15 +89,18 @@ const Drawer = ({ children }: Props) => {
         <motion.ul
           variants={variants}
           ref={drawerRef}
-          className="text-start text-sm text-default bg-default min-h-full"
+          className="text-start text-sm text-default border-r-2  border-solid border-default bg-default min-h-full"
         >
           <motion.li
             onClick={() => {
               setIsOpen(false);
             }}
-            className="text-center cursor-pointer md:hidden"
+            className="text-center cursor-pointer"
           >
-            <motion.div className="p-2 w-full flex justify-center border-t-2 border-b-2 border-solid border-default" variants={iconVariants}>
+            <motion.div
+              className="p-2 w-full flex justify-center border-t-2 border-b-2 border-solid border-default"
+              variants={iconVariants}
+            >
               <AiFillBackward className="text-2xl hover:rotate-180" />
             </motion.div>
           </motion.li>

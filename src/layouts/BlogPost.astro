@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import Drawer from "../components/React/Drawer";
+import Accordion from "../components/React/Accordion";
 import { getCollection } from "astro:content";
 
 const noteList = await getCollection("note");
@@ -9,14 +10,18 @@ const noteList = await getCollection("note");
 <Layout>
   <div class="grid grid-cols-12">
     <div class="col-span-0 md:col-span-2">
-      <Drawer client:load isFixed={true}>
-        {
-          noteList.map((note, i) => (
-            <li class="p-3 border-b-2 border-solid border-default">
-              <a href={`/blog/note${i + 1}/note${i + 1}`}>{note.data.title}</a>
-            </li>
-          ))
-        }
+      <Drawer client:load isFixed={true} transition:persist>
+        <Accordion header="Blog" isExpand={true} onClick={() => {}}>
+          {
+            noteList.map((note, i) => (
+              <li class="p-3 border-b-2 border-solid border-default">
+                <a href={`/blog/note${i + 1}/note${i + 1}`}>
+                  {note.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </Accordion>
       </Drawer>
     </div>
     <div class="col-span-12 md:col-span-10 py-2 ps-10 min-h-screen">

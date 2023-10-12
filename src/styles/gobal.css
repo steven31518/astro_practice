@@ -33,19 +33,24 @@
     33%;
 }
 @font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
+  font-family: "Atkinson Hyperlegible Regular";
+  src: url("https://db.onlinewebfonts.com/t/41754baf7feefb8ce2f8f9f8cfec9d89.eot");
+  src:
+    url("https://db.onlinewebfonts.com/t/41754baf7feefb8ce2f8f9f8cfec9d89.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/41754baf7feefb8ce2f8f9f8cfec9d89.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/41754baf7feefb8ce2f8f9f8cfec9d89.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/41754baf7feefb8ce2f8f9f8cfec9d89.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/41754baf7feefb8ce2f8f9f8cfec9d89.svg#Atkinson Hyperlegible Regular")
+      format("svg");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+
 body {
   font-family: "Atkinson", sans-serif;
   margin: 0;

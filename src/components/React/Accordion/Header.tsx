@@ -24,7 +24,7 @@ const Header = ({ header, isExpand, onClick }: Props) => {
           ease: "easeInOut",
         }}
       >
-        <AiFillCaretRight className="text-2xl me-3 text-primary" />
+        <AiFillCaretRight className="text-2xl me-3" />
       </motion.div>
     </div>
   );

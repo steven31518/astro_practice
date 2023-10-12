@@ -22,7 +22,7 @@ const Accordion = ({
   return (
     <div
       className={cn(
-        "inline-flex flex-col border-2 border-solid border-primary rounded-md",
+        "inline-flex flex-col border-t-1 border-solid border-default w-full",
         className,
       )}
       id={id}

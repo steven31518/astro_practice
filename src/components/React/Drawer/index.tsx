@@ -7,7 +7,7 @@ import { useMediaQuery } from "../unit/useMediaQuery";
 import { useEffect, useRef, useState } from "react";
 const variants = {
   open: (height: number) => ({
-    width: 220,
+    width: 251,
     top: height,
     x: 0,
     transition: {
@@ -73,7 +73,7 @@ const Drawer = ({ children }: Props) => {
         onClick={() => handleDrawerOpen()}
         whileHover={{ scale: 1.5 }}
         whileTap={{ scale: 0.9 }}
-        className={cn("text-center cursor-pointer p-1 fixed z-50")}
+        className={cn("text-center cursor-pointer p-1 fixed z-50 md:hidden")}
       >
         <AiOutlineMenuUnfold className="text-2xl" />
       </motion.div>
@@ -92,9 +92,9 @@ const Drawer = ({ children }: Props) => {
             onClick={() => {
               setIsOpen(false);
             }}
-            className="text-center cursor-pointer"
+            className="text-center cursor-pointer md:hidden"
           >
-            <motion.div className="p-2" variants={iconVariants}>
+            <motion.div className="p-2 w-full flex justify-center border-t-2 border-b-2 border-solid border-default" variants={iconVariants}>
               <AiFillBackward className="text-2xl hover:rotate-180" />
             </motion.div>
           </motion.li>

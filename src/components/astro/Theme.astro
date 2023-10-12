@@ -46,6 +46,7 @@ const darkMode = () => {
   }
   return false;
 };
+
 document.addEventListener("astro:after-swap", () => {
   if (darkMode()) {
     document.documentElement.classList.add("dark");

@@ -1,0 +1,62 @@
+---
+title: astro mdx 3
+description: astro:after-swap
+image: ../../../../../assets/img/javier-miranda-fSLGThEmY2Y-unsplash (1).jpg
+link: https://www.youtube.com
+---
+
+# old page to new page , restore state method
+
+畫面更新後，監聽儲存的狀態。
+
+## 說明:
+
+An event that fires immediately after the new page replaces the old page. You can listen to this event on the document.
+
+This event is useful to restore any state on the DOM that needs to transfer over to the new page.
+
+For example, if you are implementing dark mode support, this event can be used to restore state across page loads.
+
+offical doc:
+ [after-swap](https://docs.astro.build/en/guides/view-transitions/#astroafter-swap)    
+
+```js
+
+
+const darkMode = () => {
+  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+    return localStorage.getItem("theme") === "dark" ? true : false;
+  }
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return true;
+  }
+  return false;
+};
+
+document.addEventListener("astro:after-swap", () => {
+  if (darkMode()) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+});
+
+const themeSwitch = document.querySelectorAll("[data-theme-switcher]");
+
+document.addEventListener("DOMContentLoaded", () => {
+  [].forEach.call(themeSwitch, function (ts) {
+    ts.checked = darkMode ? true : false;
+    ts.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        document.documentElement.classList.contains("dark")
+          ? "dark"
+          : "light",
+      );
+    });
+  });
+});
+
+
+

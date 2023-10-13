@@ -1,6 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import Drawer from "../components/React/Drawer";
+import Accordion from "../components/React/Accordion";
 
 import { getCollection } from "astro:content";
 
@@ -8,19 +8,12 @@ const noteList = await getCollection("note");
 ---
 
 <Layout>
-  <div class="flex flex-row w-full">
-    <div class="min-h-screen">
-      <Drawer client:load isFixed={true} transition:persist>
-        <h2 slot="title">Blog</h2>
-        {
-          noteList.map((note, i) => (
-            <li class="p-3 border-b-2 border-solid border-default">
-              <a href={`/blog/note${i + 1}/note${i + 1}`}>{note.data.title}</a>
-            </li>
-          ))
-        }
-      </Drawer>
-    </div>
-    <div class="min-h-screen w-full"><slot /></div>
-  </div>
+  {
+    noteList.map((note, i) => (
+      <li class="p-3 border-b-2 border-solid border-default" slot="menu">
+        <a href={`/blog/note${i + 1}/note${i + 1}`}>{note.data.title}</a>
+      </li>
+    ))
+  }
+  <slot />
 </Layout>

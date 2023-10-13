@@ -1,3 +1,4 @@
+import { useState } from "react";
 import cn from "../unit/styleMerge";
 import Header from "./Header";
 import Panel from "./Panel";
@@ -5,20 +6,12 @@ import Panel from "./Panel";
 type Props = {
   children?: React.ReactNode;
   header: string | React.ReactNode;
-  isExpand: boolean;
-  onClick: (e: React.SyntheticEvent) => void;
   className?: string;
   id?: string;
 };
 
-const Accordion = ({
-  children,
-  header,
-  isExpand,
-  onClick,
-  className,
-  id,
-}: Props) => {
+const Accordion = ({ children, header, className, id }: Props) => {
+  const [isExpand, setIsExpand] = useState(false);
   return (
     <div
       className={cn(
@@ -27,7 +20,13 @@ const Accordion = ({
       )}
       id={id}
     >
-      <Header header={header} isExpand={isExpand} onClick={onClick} />
+      <Header
+        header={header}
+        isExpand={isExpand}
+        onClick={() => {
+          setIsExpand(!isExpand);
+        }}
+      />
       <Panel panel={children} isExpand={isExpand} />
     </div>
   );

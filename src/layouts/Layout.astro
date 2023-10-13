@@ -1,6 +1,8 @@
 ---
 import BaseHead from "../components/astro/BaseHead.astro";
 import Hearder from "../components/astro/Hearder.astro";
+import Drawer from "../components/React/Drawer";
+import Accordion from "../components/React/Accordion";
 import Footer from "../components/astro/Footer.astro";
 
 interface Props {
@@ -18,8 +20,28 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body>
-    <Hearder title={title}  />
-    <slot />
+    <Hearder title={title} />
+    <div class="flex flex-row w-full">
+      <div class="min-h-screen">
+        <Drawer client:load isFixed={true} transition:persist>
+          <li class="p-3 border-b-2 border-solid border-default">
+            <a href={`/`}>Home</a>
+          </li>
+          <li class="p-3 border-b-2 border-solid border-default">
+            <a href={`/newPage`}>Page</a>
+          </li>
+
+          <Accordion
+            header={"Blog"}
+            className="border-b-2 border-solid border-default"
+            client:load
+          >
+            <slot name="menu" />
+          </Accordion>
+        </Drawer>
+      </div>
+      <div class="min-h-screen w-full"><slot /></div>
+    </div>
     <Footer />
   </body>
 </html>

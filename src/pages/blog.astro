@@ -1,0 +1,10 @@
+---
+import BlogPost from "../layouts/BlogPost.astro";
+const data = Astro.locals;
+---
+
+<BlogPost title="about Astro">
+  <div class="content-normal">
+    <div><h2>{data.welcomeTitle()}</h2></div>
+  </div>
+</BlogPost>

@@ -1,16 +1,36 @@
 ---
-title: astro mdx 2
-description: different astro mdx render
+title: tailwindcss/typography插件
+description: 官方提供的typography插件
 image: ../../../../../assets/img/javier-miranda-fSLGThEmY2Y-unsplash (1).jpg
 link: https://www.youtube.com
 ---
 
+# @tailwindcss/typography-官方提供的typography插件
 
+官方的typography插件，可以让我们在markdown中使用tailwindcss的样式，但是需要注意的是，它只能在markdown中使用，不能在html中使用。
 
-# Practice Astro MDX
+## set of prose styles
 
-Here is my counter component, working in MDX:
+使用範例:
 
-## Counter
+```js
+<BlogPost title={title}>
+  <div
+    class="p-10 prose
+   prose-h1:text-default
+   prose-h2:text-default
+   prose-strong:text-danger
+   prose-a:text-primary
+   text-default
+   bg-default max-w-none"
+  >
+    <Content />
+  </div>
+</BlogPost>
+```
+
+像是prose-strong:text-danger，prose-a:text-primary這樣的class，更改了以下內容中link與**text**的顏色
 
 I live on **Earth** but feel free to me on [youtube](https://www.youtube.com)
+
+我們可以在prose中使用tailwindcss的class，但是需要注意的是，prose中的class會覆蓋掉外層的class，所以如果要使用外層的class，需要在prose中重新定義。

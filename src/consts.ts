@@ -3,8 +3,4 @@
 
 export const SITE_TITLE = "Astro Blog";
 export const SITE_DESCRIPTION = "Welcome to my website!";
-export const SITE_LINK = [
-  { name: "Home", link: "/" },
-  { name: "Blog", link: "/newPage" },
-  { name: "Authors", link: "/authors" },
-];
+export const SITE_LINK = "blog";

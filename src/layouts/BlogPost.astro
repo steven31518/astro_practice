@@ -1,19 +1,24 @@
 ---
 import Layout from "./Layout.astro";
 import Accordion from "../components/React/Accordion";
-
 import { getCollection } from "astro:content";
-
 const noteList = await getCollection("note");
 ---
 
 <Layout>
-  {
-    noteList.map((note, i) => (
-      <li class="p-3 border-b-2 border-solid border-default" slot="menu">
-        <a href={`/blog/note${i + 1}/note${i + 1}`}>{note.data.title}</a>
-      </li>
-    ))
-  }
+  <Accordion
+    client:load
+    slot="menu"
+    className="border-b-2 border-solid border-default"
+  >
+    <li slot="header"><a href="/blog">Blog</a></li>
+    {
+      noteList.map((note, i) => (
+        <li class="py-4 px-3 border-b-1 border-solid border-default">
+          <a href={`/blog/note${i + 1}/note${i + 1}`}>{note.data.title}</a>
+        </li>
+      ))
+    }
+  </Accordion>
   <slot />
 </Layout>

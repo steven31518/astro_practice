@@ -18,6 +18,7 @@ const Panel = ({ panel, isExpand, className }: PanelProps) => {
       className={cn("overflow-hidden mt-1 accordion__panel", className)}
       animate={{
         height: isExpand ? scrollHeight : 0,
+        opacity: isExpand ? 1 : 0,
       }}
       transition={{
         duration: 0.2,

@@ -1,7 +1,7 @@
-import { AiFillCaretRight } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
 import { motion } from "framer-motion";
 type Props = {
-  header: string | React.ReactNode;
+  header?: string | React.ReactNode;
   isExpand: boolean;
   onClick: (e: React.SyntheticEvent) => void;
 };
@@ -24,7 +24,7 @@ const Header = ({ header, isExpand, onClick }: Props) => {
           ease: "easeInOut",
         }}
       >
-        <AiFillCaretRight className="text-2xl me-3" />
+        <AiOutlineRight className="text-2xl me-3" />
       </motion.div>
     </div>
   );

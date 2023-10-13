@@ -15,9 +15,10 @@ interface Todo {
   description: string;
 }
 
-function createArray<T = string>(length: number, value: T): Array<T> {
+function createArray<T = string>(length: number = 10, value: T): Array<T> {
   let result: T[] = [];
-  for (let i = 0; i < length; i++) {9
+  for (let i = 0; i < length; i++) {
+    9;
     result[i] = value;
   }
   return result;

@@ -1,5 +1,5 @@
 ---
-title: astro mdx 3
+title: astro:after-swap保留頁面狀態
 description: astro:after-swap
 image: ../../../../../assets/img/javier-miranda-fSLGThEmY2Y-unsplash (1).jpg
 link: https://www.youtube.com
@@ -18,11 +18,9 @@ This event is useful to restore any state on the DOM that needs to transfer over
 For example, if you are implementing dark mode support, this event can be used to restore state across page loads.
 
 offical doc:
- [after-swap](https://docs.astro.build/en/guides/view-transitions/#astroafter-swap)    
+[after-swap](https://docs.astro.build/en/guides/view-transitions/#astroafter-swap)
 
 ```js
-
-
 const darkMode = () => {
   if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
     return localStorage.getItem("theme") === "dark" ? true : false;
@@ -50,13 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.toggle("dark");
       localStorage.setItem(
         "theme",
-        document.documentElement.classList.contains("dark")
-          ? "dark"
-          : "light",
+        document.documentElement.classList.contains("dark") ? "dark" : "light",
       );
     });
   });
 });
-
-
-
+```

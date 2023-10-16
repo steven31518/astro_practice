@@ -11,14 +11,29 @@ const noteList = await getCollection("note");
     slot="menu"
     className="border-b-2 border-solid border-default"
   >
-    <li slot="header" class="text-lg"><a href="/blog">Blog</a></li>
+    <li slot="header" class="text-lg"><a href="/blog">astro</a></li>
     {
       noteList.map((note, i) => (
         <li class="py-4 px-3 border-b-1 border-solid border-default">
-          <a href={`/blog/note${i + 1}/note${i + 1}`}>{note.data.title}</a>
+          <a href={`/blog/note${i + 1}/note`}>{note.data.title}</a>
         </li>
       ))
     }
   </Accordion>
+  <Accordion
+    client:load
+    slot="react"
+    className="border-b-2 border-solid border-default"
+  >
+    <li slot="header" class="text-lg"><a href="/blog">react</a></li>
+    {
+      noteList.map((note, i) => (
+        <li class="py-4 px-3 border-b-1 border-solid border-default">
+          <a href={`/blog/note${i + 1}/note`}>{note.data.title}</a>
+        </li>
+      ))
+    }
+  </Accordion>
+
   <slot />
 </Layout>

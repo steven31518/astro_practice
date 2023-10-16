@@ -7,7 +7,6 @@ type Props = {
   coverImg: string;
   characterImg: string;
 };
-
 /**
  * 1. className : no limit
  * 2. titleImg : image's url

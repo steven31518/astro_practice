@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useDimensions } from "../unit/useDimansions";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-
+import { AiFillFastBackward } from "react-icons/ai";
 import cn from "../unit/styleMerge";
 import { useMediaQuery } from "../unit/useMediaQuery";
 import { useEffect, useRef, useState } from "react";
@@ -38,7 +37,6 @@ type Props = {
 
 const Drawer = ({ children, menuName }: Props) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isSwitch, setIsSwitch] = useState(false);
   const drawerRef = useRef(null);
   const { height } = useDimensions(drawerRef);
   const matches = useMediaQuery("(min-width: 768px)");
@@ -85,7 +83,7 @@ const Drawer = ({ children, menuName }: Props) => {
             whileHover={{ opacity: 0.5 }}
           >
             <motion.div className="p-2 w-full flex justify-center border-t-2 border-b-2 border-solid border-default">
-              <AiOutlineClose className="text-xl" />
+              <AiFillFastBackward className="text-2xl" />
             </motion.div>
           </motion.li>
           {menuName}

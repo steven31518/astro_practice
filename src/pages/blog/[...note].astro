@@ -4,7 +4,6 @@ import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
   const noteData = await getCollection("note");
-
   return noteData.map((note) => {
     return {
       params: {
@@ -21,12 +20,12 @@ export async function getStaticPaths() {
   });
 }
 
-const { title, description, image, link, content } = Astro.props;
+const { title, description, content } = Astro.props;
 
 const { Content } = await content;
 ---
 
-<BlogPost title={title}>
+<BlogPost title={title} description={description}>
   <div
     class="p-10
     prose

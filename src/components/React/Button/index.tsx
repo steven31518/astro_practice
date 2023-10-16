@@ -9,7 +9,6 @@ interface Props {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   children?: React.ReactNode | string;
-  name?: string;
   onClick?: () => void;
 }
 

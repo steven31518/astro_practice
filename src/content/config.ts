@@ -28,3 +28,4 @@ export const collections = {
   portfolio: portfolioCollection,
   experience: experienceCollection,
 };
+// 4. Use the collection in a page!

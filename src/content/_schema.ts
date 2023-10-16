@@ -33,3 +33,4 @@ export const collectionSchema = {
   experienceSchema,
   noteSchema,
 };
+

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useDimensions } from "../unit/useDimansions";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+
 import cn from "../unit/styleMerge";
 import { useMediaQuery } from "../unit/useMediaQuery";
 import { useEffect, useRef, useState } from "react";
@@ -77,23 +77,15 @@ const Drawer = ({ children, menuName }: Props) => {
           ref={drawerRef}
           className="text-start text-sm text-default border-r-2 border-solid border-default bg-default min-h-full"
         >
-          <motion.li>
-            <motion.div className="p-2 w-full flex justify-between border-t-2 border-b-2 border-solid border-default">
-              <span className="">
-                <AiOutlineArrowLeft
-                  className="text-xl hover:opacity-50 cursor-pointer"
-                  onClick={() => {
-                    setIsSwitch(!isSwitch);
-                  }}
-                />
-              </span>
-
-              <AiOutlineClose
-                className="text-xl hover:opacity-50 cursor-pointer"
-                onClick={() => {
-                  setIsOpen(false);
-                }}
-              />
+          <motion.li
+            className="cursor-pointer"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            whileHover={{ opacity: 0.5 }}
+          >
+            <motion.div className="p-2 w-full flex justify-center border-t-2 border-b-2 border-solid border-default">
+              <AiOutlineClose className="text-xl" />
             </motion.div>
           </motion.li>
           {menuName}

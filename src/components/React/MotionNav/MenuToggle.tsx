@@ -22,7 +22,9 @@ const MenuToggle = ({ toggle, className }: Props) => (
     variant="text"
     themeColor="secondary"
     className={cn("m-auto rounded-sm", className)}
-  >Home</Button>
+  >
+    close
+  </Button>
 );
 
 export default MenuToggle;

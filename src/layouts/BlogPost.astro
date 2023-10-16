@@ -11,7 +11,7 @@ const noteList = await getCollection("note");
     slot="menu"
     className="border-b-2 border-solid border-default"
   >
-    <li slot="header"><a href="/blog">Blog</a></li>
+    <li slot="header" class="text-lg"><a href="/blog">Blog</a></li>
     {
       noteList.map((note, i) => (
         <li class="py-4 px-3 border-b-1 border-solid border-default">

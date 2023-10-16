@@ -5,7 +5,7 @@ import Panel from "./Panel";
 
 type Props = {
   children?: React.ReactNode;
-  header: string | React.ReactNode;
+  header?: string | React.ReactNode;
   className?: string;
   id?: string;
 };
